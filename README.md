@@ -1,11 +1,11 @@
 # 1. Introduction
-This directory provides the prototype of the paper:"Titan: Efficient Multi-target Directed Greybox Fuzzing"[S&P 2024]. This work is based on TITAN[S&P 2024].
+This directory provides the prototype of the paper: "Titan: Efficient Multi-target Directed Greybox Fuzzing"[S&P 2024]. This work is based on TITAN[S&P 2024].
 
 # 2. Run Titan on Magma
-A easier way to run Titan on the fuzzing benchmark Magma is just move this repository into "magma/fuzzers" of [magma repository](https://github.com/HexHive/magma) and then follow the [guidance](https://hexhive.epfl.ch/magma/docs/getting-started.html) to start fuzzing.
+A easier way to run Titan on the fuzzing benchmark Magma is to move this repository into "magma/fuzzers" of [magma repository](https://github.com/HexHive/magma) and then follow the [guidance](https://hexhive.epfl.ch/magma/docs/getting-started.html) to start fuzzing.
 
 # 3. Run Titan on Other Programs
-For other programs not included in magma, you could refer to the following scripts to fuzz with Titan.
+For fuzzing other programs not included in Magma, you could refer to the following scripts.
 - `preinstall.sh`: Support environment.
 - `instrument.sh`: Generate binary for fuzzing.
 - `run.sh`: Start fuzzing.
@@ -39,26 +39,33 @@ pip3 install wllvm
 ```
 ## 3.2 Instrument  Binary
 It is recommended to run Titan under a new folder `$TITAN/Outputs` to make sure the output files are gathered in a common folder.
+
 ```mkdir $TITAN/Outputs; cd $TITAN/Outputs```
 
 ### 3.2.1 Generate bitcode file
 Generate the bitcode file for the target project by wllvm.
 
 ### 3.2.2 Static Analysis
+
 ```$TITAN/prototype/precondInfer <target.bc> --target-file=<cstest.txt> --join-bound=1```
+
 **Inputs:**
 - `<target.bc>` is the bitcode file for the target project.
-- `<cstest.txt>` has mutiple lines, which record the location of mutiple targets. Each line is in the form of “fileName:lineNum” (e.g. parser.c:66 means that the target for directed fuzzing is at Line 66 of parser.c).
+- `<cstest.txt>` has multiple lines, which record the location of multiple targets. Each line is in the form of “fileName:lineNum” (e.g. parser.c:66 means that the target for directed fuzzing is at Line 66 of parser.c).
+  
 **Outputs:**
 - `range_res.txt`: range analysis result.
 - `transed.bc`: The slightly transformed bc for further processing.
 
 ### 3.2.3 Instrumentation
+
 ```$TITAN/prototype/Ins -output=$TITAN/Outputs/fuzz.bc -afl -res=$TITAN/Outputs -log=$TITAN/Outputs/log_Ins.txt -load=$TITAN/Outputs/range_res.txt $TITAN/Outputs/transed.bc```
 
 ### 2.2.4 Compilation
+
 ```clang $TITAN/Outputs/transed.bc -o $TITAN/Outputs/fuzz_bin -lm -lz $TITAN/prototype/afl-llvm-rt.o```
 
 ## 2.4 Fuzzing
 Finally, fuzz all the things!
+
 ```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -- $TITAN/Outputs/fuzz_bin @@```
