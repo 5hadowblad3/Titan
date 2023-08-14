@@ -47,6 +47,8 @@ Generate the bitcode file for the target project by wllvm.
 
 ### 3.2.2 Static Analysis
 
+The static analysis engine used in Titan is similar to [Beacon(S&P'22)](https://5hadowblad3.github.io/files/Oakland22-Beacon.pdf). You can have more details by accessing its [repo](https://github.com/5hadowblad3/Beacon_artifact).
+
 ```$TITAN/prototype/precondInfer <target.bc> --target-file=<cstest.txt> --join-bound=1```
 
 **Inputs:**
