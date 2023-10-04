@@ -72,6 +72,6 @@ Finally, fuzz all the things!
 
 ```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -- $TITAN/Outputs/fuzz_bin @@```
 
-Q&A, Help wanted:
-1, Speed of Static Analysis.
-Currently, Titan uses sequential static analysis for each target. Even though it is affordable as an offline one-time effort, it is still possible to extend our static analysis as a multi-thread/process version, which can greatly reduce the time of analysis. This problem may also become a research question for efficient parallel static analysis in future work. For more implementation details and potential discussion, please feel free to drop an email or open an issue in the issue track.
+# Q&A:
+## 1, Speed of the Static Analysis (Help wanted)  
+Currently, Titan uses sequential static analysis for each target. Even though it is affordable as an offline one-time effort for the evaluation, it may become expensive in practice. One potential solution is to extend our static analysis as a multi-thread/process version, which can significantly reduce the analysis time. This orthogonal problem may also become a research question for efficient parallel static analysis in future work. For more implementation details and potential discussion, please feel free to drop an email or open an issue in the issue track.
