@@ -14,6 +14,13 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
  
 "$MAGMA/build.sh"
 
+# replace the build scripts for specific targets
+(
+	if [[ $TARGET = *sqlite3* ]]; then
+		cp $FUZZER/build_targets/sqlite3.sh $TARGET/build.sh
+	fi
+)
+
 (
 	echo -e "## Build by wllvm"
 	export PATH="/usr/local/bin:$PATH"
