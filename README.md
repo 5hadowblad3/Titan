@@ -2,7 +2,7 @@
 This directory provides the prototype of the paper: "Titan: Efficient Multi-target Directed Greybox Fuzzing"[S&P 2024]. 
 
 # 2. Run Titan on Magma
-A easier way to run Titan on the fuzzing benchmark Magma is to move this repository into "magma/fuzzers" of [magma repository](https://github.com/HexHive/magma) and then follow the [guidance](https://hexhive.epfl.ch/magma/docs/getting-started.html) to start fuzzing.
+An easier way to run Titan on the fuzzing benchmark Magma is to move this repository into "magma/fuzzers" of [magma repository](https://github.com/HexHive/magma) and then follow the [guidance](https://hexhive.epfl.ch/magma/docs/getting-started.html) to start fuzzing. For some specific modifications to ensure correct deployment, please refer to the [build_targets](https://github.com/5hadowblad3/Titan/tree/main/build_targets) repo.
 
 # 3. Run Titan on Other Programs
 For fuzzing other programs not included in Magma, you could refer to the following scripts.
