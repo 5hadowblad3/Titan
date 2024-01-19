@@ -57,7 +57,11 @@ The static analysis engine used in Titan is similar to [Beacon(S&P'22)](https://
   
 **Outputs:**
 - `range_res.txt`: range analysis result.
-- `transed.bc`: The slightly transformed bc for further processing.
+- `transed.bc`: The slightly transformed bc for further processing. 
+- `bug_conf_cluster`: Cluster info for conflict relation.
+- `bug_over_cluster`: Cluster info for over relation.
+
+Notice that the independent information is included in the above two files.
 
 ### 3.2.3 Instrumentation
 
@@ -70,7 +74,7 @@ The static analysis engine used in Titan is similar to [Beacon(S&P'22)](https://
 ## 2.4 Fuzzing
 Finally, fuzz all the things!
 
-```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -- $TITAN/Outputs/fuzz_bin @@```
+```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -s "$TITAN/Outputs/bug_conf_cluster" -k "$TITAN/Outputs/bug_over_cluster" -- $TITAN/Outputs/fuzz_bin @@```
 
 # Q&A:
 ## 1, Speed of the Static Analysis (Help wanted)  
