@@ -74,7 +74,7 @@ Notice that the independent information is included in the above two files.
 ## 2.4 Fuzzing
 Finally, fuzz all the things!
 
-```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -s "$TITAN/Outputs/bug_conf_cluster" -k "$TITAN/Outputs/bug_over_cluster" -- $TITAN/Outputs/fuzz_bin @@```
+```$TITAN/prototype/afl-fuzz -i <seed_dir> -o $TITAN/Outputs/fuzz_out -s "$TITAN/Outputs/bug_conf_cluster" -k "$TITAN/Outputs/bug_over_cluster" -- $TITAN/Outputs/fuzz_bin <other_parameters> @@```
 
 # Q&A:
 ## 1, Speed of the Static Analysis (Help wanted)  
