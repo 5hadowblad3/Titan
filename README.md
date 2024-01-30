@@ -69,7 +69,7 @@ Notice that the independent information is included in the above two files.
 
 ### 2.2.4 Compilation
 
-```clang $TITAN/Outputs/transed.bc -o $TITAN/Outputs/fuzz_bin -lm -lz $TITAN/prototype/afl-llvm-rt.o```
+```clang $TITAN/Outputs/fuzz.bc -o $TITAN/Outputs/fuzz_bin -lm -lz $TITAN/prototype/afl-llvm-rt.o```
 
 ## 2.4 Fuzzing
 Finally, fuzz all the things!
