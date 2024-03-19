@@ -92,7 +92,8 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 			$CXX $CXXFLAGS -std=c++11 -I. $input_bc -o $output_bin $afl_llvm_rt $LDFLAGS $BUILD_BC_LIBS -I"$WORK/poppler/cpp" -I"$TARGET/repo/cpp" \
 			"$WORK/poppler/cpp/libpoppler-cpp.a" "$WORK/poppler/libpoppler.a" "$WORK/lib/libfreetype.a" -lz -llzma -ljpeg -lz -lopenjp2 -lpng -ltiff -llcms2 -lm -lpthread -pthread
 		elif [[ $TARGET = *sqlite3* ]]; then
-			$CXX $CXXFLAGS -std=c++11 -I. $input_bc -o $output_bin $afl_llvm_rt $LDFLAGS $BUILD_BC_LIBS $WORK/.libs/libsqlite3.a -lpthread -ldl -lm -lz
+                        WORK="$TARGET/work"
+			$CXX $CXXFLAGS -std=c++11 -I. $input_bc -o $output_bin $afl_llvm_rt $LDFLAGS $BUILD_BC_LIBS $WORK/.libs/libsqlite3.a -lpthread -pthread -ldl -lm -lz
 		else 
 			echo "Could not support this target $TARGET"
 		fi
