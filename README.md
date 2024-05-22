@@ -1,5 +1,5 @@
 # 1. Introduction
-This directory provides the prototype of the paper: "Titan: Efficient Multi-target Directed Greybox Fuzzing"[S&P 2024]. 
+This directory provides the prototype of the paper: "Titan: Efficient Multi-target Directed Greybox Fuzzing"(S&P 2024). 
 
 # 2. Run Titan on Magma
 An easier way to run Titan on the fuzzing benchmark Magma is to move this repository into "magma/fuzzers" of [magma repository](https://github.com/HexHive/magma) and then follow the [guidance](https://hexhive.epfl.ch/magma/docs/getting-started.html) to start fuzzing. For some specific modifications to ensure correct deployment, please refer to the [build_targets](https://github.com/5hadowblad3/Titan/tree/main/build_targets) repo.
@@ -58,8 +58,8 @@ The static analysis engine used in Titan is similar to [Beacon(S&P'22)](https://
 **Outputs:**
 - `range_res.txt`: range analysis result.
 - `transed.bc`: The slightly transformed bc for further processing. 
-- `bug_conf_cluster`: Cluster info for conflict relation.
-- `bug_over_cluster`: Cluster info for over relation.
+- `bug_conf_cluster`: Cluster info for conflict correlations.
+- `bug_over_cluster`: Cluster info for overlap/independent correlations.
 
 Notice that the independent information is included in the above two files.
 
@@ -78,4 +78,4 @@ Finally, fuzz all the things!
 
 # Q&A:
 ## 1, Speed of the Static Analysis (Help wanted)  
-Currently, Titan uses sequential static analysis for each target. Even though it is affordable as an offline one-time effort for the evaluation, it may become expensive in practice. One potential solution is to extend our static analysis as a multi-thread/process version, which can significantly reduce the analysis time. This orthogonal problem may also become a research question for efficient parallel static analysis in future work. For more details on implementation and potential discussion, please feel free to drop an email or open an issue in the issue track. 
+Currently, Titan uses sequential static analysis for each target. Even though it is affordable as an offline one-time effort for the paper evaluation, it may become expensive in practice. One potential solution is to extend our static analysis as a multi-thread/process version, which can significantly reduce the analysis time. This orthogonal problem may also become a research question for efficient parallel static analysis in future work. For more details on implementation and potential discussion, please feel free to drop an email or open an issue in the issue track. 
